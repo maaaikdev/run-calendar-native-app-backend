@@ -90,7 +90,7 @@ const eventsCalendar = [
         }
     },
     {
-        id: 5,
+        id: 6,
         name: "Corre con el Alma",
         date: "2024-09-22T8:00:00Z",
         image: "images-events/2024/septiembre/corre-com-el-alma/corre-com-el-alma-kv.jpeg",

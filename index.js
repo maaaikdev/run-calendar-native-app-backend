@@ -16,11 +16,23 @@ app.get('/', (req, res) => {
 //Get List events
 const eventsCalendar = require('./events');
 
-app.get('/event-list', (req, res) => {
+app.get('/events', (req, res) => {
     res.send(eventsCalendar)
 });
 
-app.use('/photos', express.static(path.join(__dirname, 'images-events')));
+// Get specific event by ID
+app.get('/events/:id', (req, res) => {
+    const eventId = req.params.id;
+    const event = eventsCalendar.find(e => e.id === parseInt(eventId));
+    
+    if (event) {
+        res.send(event);
+    } else {
+        res.status(404).send({ error: 'Event not found' });
+    }
+});
+
+app.use('/images-events', express.static(path.join(__dirname, 'images-events')));
 
 app.listen(port, () => {
     console.log(`Server run in http://locahost:${port}`);
